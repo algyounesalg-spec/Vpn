@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-aura-black: #050505;
+  --color-aura-white: #FFFFFF;
+  --color-aura-glass: rgba(255, 255, 255, 0.05);
+  --color-aura-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-aura-black text-aura-white font-sans overflow-hidden antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-4;
+  }
+  
+  .glow-white {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.15), 0 0 100px rgba(255, 255, 255, 0.05);
+  }
+
+  .glow-active {
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.3), 0 0 120px rgba(255, 255, 255, 0.1);
+  }
+  
+  .theme-transition {
+    @apply transition-all duration-700 ease-in-out;
+  }
+}
+
+/* Custom transitions for the server list */
+.server-enter { opacity: 0; transform: translateY(20px); }
+.server-enter-active { opacity: 1; transform: translateY(0); transition: all 0.3s ease-out; }
+.server-exit { opacity: 1; transform: translateY(0); }
+.server-exit-active { opacity: 0; transform: translateY(-20px); transition: all 0.3s ease-in; }
